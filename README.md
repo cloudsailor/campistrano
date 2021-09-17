@@ -1,5 +1,8 @@
 # Campistrano
 
+Send notifications to Basecamp 3 about Capistrano deployments.
+
+Campistrano is based on the [Slackistrano]('https://github.com/phallstrom/slackistrano') gem.
 ## Installation
 
 1. Add this line to your application's Gemfile:
@@ -26,7 +29,7 @@
 
    ```ruby
    set :campistrano, {
-     webhook: 'your-chatbot-url'
+     webhooks: ['your-chatbot-url', 'your-second-chatbot-url']
    }
    ```
 ## Test your Configuration
@@ -56,7 +59,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/campistrano.
-
 
 ## License
 
