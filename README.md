@@ -1,28 +1,51 @@
 # Campistrano
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/campistrano`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
-Add this line to your application's Gemfile:
+1. Add this line to your application's Gemfile:
 
-```ruby
-gem 'campistrano'
-```
+   ```ruby
+   gem 'campistrano'
+   ```
 
-And then execute:
+2. Execute:
 
-    $ bundle install
+   ```
+   $ bundle
+   ```
 
-Or install it yourself as:
+3. Require the library in your application's Capfile:
 
-    $ gem install campistrano
-
+   ```ruby
+   require 'campistrano/capistrano'
+   ```
 ## Usage
 
-TODO: Write usage instructions here
+1. Configure your Basecamp3 [Chatbot](https://3.basecamp-help.com/article/160-chatbots-and-webhooks).
+2. Add the following to `config/deploy.rb`:
+
+   ```ruby
+   set :campistrano, {
+     webhook: 'your-chatbot-url'
+   }
+   ```
+## Test your Configuration
+
+Test your setup by running the following command. This will post each stage's
+message to Slack in turn.
+
+```
+$ cap production basecamp:deploy:test
+```
+
+## Disabling posting to Basecamp
+
+You can disable deployment notifications to a specific stage by setting the `:campistrano` 
+configuration variable to `false` instead of actual settings.
+
+```ruby
+set :campistrano, false
+```
 
 ## Development
 
