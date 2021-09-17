@@ -53,7 +53,6 @@ module Campistrano
         response = post_to_campfire(payload)
       rescue => e
         backend.warn('[campistrano] Error notifying Basecamp!')
-        backend.warn("[campistrano]   Error: #{e.inspect}")
       end
 
       if response && response.code !~ /^2/
@@ -71,7 +70,7 @@ module Campistrano
 
     def post_to_campfire_as_webhook(payload = {})
       uri = URI(@messaging.webhook)
-      Net::HTTP.post_form(uri, payload.to_json)
+      Net::HTTP.post(uri, payload.to_json, 'Content-Type' => 'application/json')
     end
 
     def dry_run?
