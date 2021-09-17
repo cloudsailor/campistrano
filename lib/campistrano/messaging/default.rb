@@ -25,11 +25,6 @@ module Campistrano
       def payload_for_failed
         super
       end
-
-      def channels_for(action)
-        super
-      end
-
     end
   end
 end

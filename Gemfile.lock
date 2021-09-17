@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    campistrano (0.1.0)
+    campistrano (0.2.0)
       capistrano (>= 3.8.1)
 
 GEM

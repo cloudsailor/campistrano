@@ -17,6 +17,7 @@ module Campistrano
     def initialize(env)
       @env = env
       config = fetch(:campistrano, {})
+      config[:webhooks] = config[:webhooks].split if config[:webhooks].is_a?(String)
       @messaging = if config
                      opts = config.dup.merge(env: @env)
                      klass = opts.delete(:klass) || Messaging::Default
@@ -37,7 +38,12 @@ module Campistrano
       payload = @messaging.payload_for(action)
       return if payload.nil?
 
-      post(payload)
+      @messaging.webhooks.each do |webhook|
+        post(payload.merge(url: webhook))
+      end
+
+
+      # post(payload)
     end
 
     private ##################################################
@@ -53,6 +59,7 @@ module Campistrano
         response = post_to_campfire(payload)
       rescue => e
         backend.warn('[campistrano] Error notifying Basecamp!')
+        backend.warn(e)
       end
 
       if response && response.code !~ /^2/
@@ -69,7 +76,7 @@ module Campistrano
     end
 
     def post_to_campfire_as_webhook(payload = {})
-      uri = URI(@messaging.webhook)
+      uri = URI(payload[:url])
       Net::HTTP.post(uri, payload.to_json, 'Content-Type' => 'application/json')
     end
 

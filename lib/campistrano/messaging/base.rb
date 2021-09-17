@@ -10,13 +10,16 @@ module Campistrano
       extend Forwardable
       def_delegators :env, :fetch
 
-      attr_reader :webhook, :options
+      attr_reader :webhooks, :options
 
       def initialize(options = {})
         @options = options.dup
 
         @env = options.delete(:env)
-        @webhook = options.delete(:webhook)
+        @webhooks = options.delete(:webhooks)
+
+        #   puts 'Bleee' if not @webhooks.id_a(Array)
+        # return 'asd' unless @webhooks.id_a(Array)
       end
 
       def payload_for_starting
@@ -53,10 +56,6 @@ module Campistrano
         {
           content: "#{deployer} has failed to #{deploying? ? 'deploy' : 'rollback'} branch #{branch} of #{application} to #{stage}"
         }
-      end
-
-      def channels_for(action)
-        @channel
       end
 
       ################################################################################
