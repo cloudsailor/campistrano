@@ -24,37 +24,56 @@ module Campistrano
 
       def payload_for_starting
         {
-          content: "#{deployer} has started deploying branch #{branch} of #{application} to #{stage}"
+          content: "#{deployer}\n
+                    status: Started deploying\n
+                    on: branch #{branch} of #{application}\n
+                    to: #{stage}"
+
         }
       end
 
       def payload_for_updating
         {
-          content: "#{deployer} is deploying branch #{branch} of #{application} to #{stage}"
+          content: "#{deployer}\n
+                    status: Is deploying\n
+                    on: Branch #{branch} of #{application}\n
+                    to: #{stage}"
         }
       end
 
       def payload_for_reverting
         {
-          content: "#{deployer} has started rolling back branch #{branch} of #{application} to #{stage}"
+          content: "#{deployer}\n
+                    status: Started rolling back\n
+                    on: Branch #{branch} of #{application}\n
+                    to: #{stage}"
         }
       end
 
       def payload_for_updated
         {
-          content: "#{deployer} has finished deploying branch #{branch} of #{application} to #{stage}"
+          content: "#{deployer}\n
+                    status: Finished deploying\n
+                    on: Branch #{branch} of #{application}\n
+                    to: #{stage}"
         }
       end
 
       def payload_for_reverted
         {
-          content: "#{deployer} has finished rolling back branch of #{application} to #{stage}"
+          content: "#{deployer}\n
+                    status: Finished rolling back\n
+                    on: Branch #{branch} of #{application}\n
+                    to: #{stage}"
         }
       end
 
       def payload_for_failed
         {
-          content: "#{deployer} has failed to #{deploying? ? 'deploy' : 'rollback'} branch #{branch} of #{application} to #{stage}"
+          content: "#{deployer}\n
+                    status: Failed to #{deploying? ? 'deploy' : 'rollback'}\n
+                    on: Branch #{branch} of #{application}\n
+                    to: #{stage}\n"
         }
       end
 
