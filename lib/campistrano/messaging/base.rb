@@ -24,56 +24,55 @@ module Campistrano
 
       def payload_for_starting
         {
-          content: "#{deployer}<br>
-                    <b>Status</b>: <span style=color:green>Started deploying</span><br>
-                    <b>On:</b> branch #{branch} of #{application}<br>
-                    <b>to:</b> #{stage}"
-
+          content: "<b>#{deployer}</b><br>
+                    <span style=color:green><b>Started deploying</b> </span> <br>
+                    branch <b>#{branch}</b> of <b>#{application}</b> <br>
+                    to <b>#{stage}</b>"
         }
       end
 
       def payload_for_updating
         {
-          content: "#{deployer}<br>
-                    <b>status</b>: <span style=color:yellow>Is deploying</span><br>
-                    <b>on:</b> Branch #{branch} of #{application}<br>
-                    <b>to:</b> #{stage}"
+          content: "<b>#{deployer}</b><br>
+                    <span style=color:#a39926><b>Is deploying</b></span><br>
+                    branch <b>#{branch}</b> of <b>#{application}</b> <br>
+                    to <b>#{stage}</b>"
         }
       end
 
       def payload_for_reverting
         {
-          content: "#{deployer}<br>
-                    <b>status</b>: <span style=color:red>Started rolling back</span><br>
-                    <b>on:</b> Branch #{branch} of #{application}<br>
-                    <b>to:</b> #{stage}"
+          content: "<b>#{deployer}</b><br>
+                    <span style=color:orange><b>Started rolling back</b></span>     <br>
+                    branch <b>#{branch}</b> of <b>#{application}</b> <br>
+                    to <b>#{stage}</b>"
         }
       end
 
       def payload_for_updated
         {
-          content: "#{deployer}<br>
-                    <b>status</b>: <span style=color:green>Finished deploying</span><br>
-                    <b>on:</b> Branch #{branch} of #{application}<br>
-                    <b>to:</b> #{stage}"
+          content: "<b>#{deployer}</b><br>
+                    <span style=color:green><b>Finished deploying</b></span><br>
+                    branch <b>#{branch}</b> of <b>#{application}</b> <br>
+                    to <b>#{stage}</b>"
         }
       end
 
       def payload_for_reverted
         {
-          content: "#{deployer}<br>
-                    <b>status:</b> <span style=color:red>Finished rolling back</span><br>
-                    <b>on:</b> Branch #{branch} of #{application}<br>
-                    <b>to:</b> #{stage}"
+          content: "<b>#{deployer}</b><br>
+                    <span style=color:green><b>Finished rolling back</b></span><br>
+                    branch <b>#{branch}</b> of <b>#{application}</b> <br>
+                    to <b>#{stage}</b>"
         }
       end
 
       def payload_for_failed
         {
-          content: "#{deployer}<br>
-                    <b>status</b>: <span style=color:red>Failed to #{deploying? ? 'deploy' : 'rollback'}</span><br>
-                    <b>on:</b> Branch #{branch} of #{application}<br>
-                    <b>to:</b> #{stage}"
+          content: "<b>#{deployer}</b><br>
+                    <span style=color:red><b>Failed to #{deploying? ? 'deploy' : 'rollback'}</b></span><br>
+                    branch <b>#{branch}</b> of <b>#{application}</b> <br>
+                    to <b>#{stage}</b>"
         }
       end
 
