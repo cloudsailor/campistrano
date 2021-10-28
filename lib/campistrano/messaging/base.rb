@@ -34,7 +34,7 @@ module Campistrano
       def payload_for_updating
         {
           content: "<b>#{deployer}</b><br>
-                    <span style=color:#a39926>Is <b>deploying</b></span><br>
+                    <span style=color:#a39926>is <b>deploying</b></span><br>
                     branch <b>#{branch}</b> of <b>#{application}</b> <br>
                     to <b>#{stage}</b>"
         }
