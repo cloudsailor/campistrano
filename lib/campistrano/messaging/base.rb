@@ -25,7 +25,7 @@ module Campistrano
       def payload_for_starting
         {
           content: "<b>#{deployer}</b><br>
-                    <span style=color:green><b>Started deploying</b> </span> <br>
+                    <span style=color:green>has <b>started deploying</b> </span> <br>
                     branch <b>#{branch}</b> of <b>#{application}</b> <br>
                     to <b>#{stage}</b>"
         }
@@ -34,7 +34,7 @@ module Campistrano
       def payload_for_updating
         {
           content: "<b>#{deployer}</b><br>
-                    <span style=color:#a39926><b>Is deploying</b></span><br>
+                    <span style=color:#a39926>is <b>deploying</b></span><br>
                     branch <b>#{branch}</b> of <b>#{application}</b> <br>
                     to <b>#{stage}</b>"
         }
@@ -43,7 +43,7 @@ module Campistrano
       def payload_for_reverting
         {
           content: "<b>#{deployer}</b><br>
-                    <span style=color:orange><b>Started rolling back</b></span>     <br>
+                    <span style=color:orange>has <b>started rolling back</b></span>     <br>
                     branch <b>#{branch}</b> of <b>#{application}</b> <br>
                     to <b>#{stage}</b>"
         }
@@ -52,7 +52,7 @@ module Campistrano
       def payload_for_updated
         {
           content: "<b>#{deployer}</b><br>
-                    <span style=color:green><b>Finished deploying</b></span><br>
+                    <span style=color:green>has <b>finished deploying</b></span><br>
                     branch <b>#{branch}</b> of <b>#{application}</b> <br>
                     to <b>#{stage}</b>"
         }
@@ -61,7 +61,7 @@ module Campistrano
       def payload_for_reverted
         {
           content: "<b>#{deployer}</b><br>
-                    <span style=color:green><b>Finished rolling back</b></span><br>
+                    <span style=color:green>has <b>finished rolling back</b></span><br>
                     branch <b>#{branch}</b> of <b>#{application}</b> <br>
                     to <b>#{stage}</b>"
         }
@@ -70,7 +70,7 @@ module Campistrano
       def payload_for_failed
         {
           content: "<b>#{deployer}</b><br>
-                    <span style=color:red><b>Failed to #{deploying? ? 'deploy' : 'rollback'}</b></span><br>
+                    <span style=color:red>has <b>failed to #{deploying? ? 'deploy' : 'rollback'}</b></span><br>
                     branch <b>#{branch}</b> of <b>#{application}</b> <br>
                     to <b>#{stage}</b>"
         }
